@@ -19,11 +19,11 @@ class DbConnect
     }
   }
 }
-// // Testovací kód pro ověření připojení
-// $db = new DbConnect();
-// $conn = $db->connect();
-// if ($conn) {
-//   echo "Connected successfully to books-db!";
-// } else {
-//   echo "Failed to connect to books-db.";
-// }
+// Testovací kód pro ověření připojení
+$db = new DbConnect();
+$conn = $db->connect();
+if ($conn) {
+  echo "Connected successfully to books-db!";
+} else {
+  echo "Failed to connect to books-db.";
+}

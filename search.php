@@ -47,7 +47,51 @@
 
   <!-- main zacatek -->
   <section>
-    <span class="mainTitle">BOOKS</span>
+    <div class="container">
+      <h2 class="h2">Searching books</h2>
+      <form action="list.php" method="get">
+        <input class="form-control my-2" name="isbn" type="text" placeholder="ISBN" />
+        <input class="form-control my-2" name="author_name" type="text" placeholder="Author's name" />
+        <input class="form-control my-2" name="author_surname" type="text" placeholder="Author's surnamei" />
+        <input class="form-control my-2" name="book_name" type="text" placeholder="Book name" />
+        <input class="btn btn-primary my-2" type="submit" placeholder="Odešli" />
+      </form>
+      <?php
+      if (sizeof($selBooks) > 0) {
+
+      ?>
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Značka</th>
+            <th>Model</th>
+            <th>Registrace</th>
+            <th>Kilometry</th>
+            <th>Rok</th>
+            <th>Akce</th>
+          </tr>
+          <?php foreach ($selBooks as $book): ?>
+            <tr>
+              <td><?php echo $book['isbn']; ?></td>
+              <td><?php echo $book['author_name']; ?></td>
+              <td><?php echo $book['author_surname']; ?></td>
+              <td><?php echo $book['book_name']; ?></td>
+              <td><?php echo $book['info']; ?></td>
+              <td>
+                <a class="btn btn-warning" href="edit.php?id=<?php echo $book['id']; ?>">Edit</a>
+                <a class="btn btn-warning" href="index.php?delete=<?php echo $book['id']; ?>" onclick="return confirm('Opravdu chcete smazat toto auto?');">Delete</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </table>
+
+      <?php
+      } else { ?>
+        <p>Žádná auta k zobrazení</p>
+      <?php
+      }
+      ?>
+
   </section>
   <!-- main konec -->
 
