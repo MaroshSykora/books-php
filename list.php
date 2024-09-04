@@ -1,28 +1,23 @@
 <?php
-// ADD STRANKA
+// Vložení souborů s definicemi tříd
 require_once('Books.php');
 include('DbConnect.php');
 
+// Vytvoření instance třídy DbConnect a získání připojení
 $conn = new DbConnect();
 $dbConnection = $conn->connect();
+
+// Vytvoření instance třídy Books
 $instanceBooks = new Books($dbConnection);
+
+// Získání všech knih
 $books = $instanceBooks->getBooks();
-// $selBooks = $books;
 
-if (isset($_GET['isbn']) || isset($_GET['author_name']) || isset($_GET['author_surname'])) {
-  $sel_isbn = $_GET['isbn'];
-  $sel_author_name = $_GET['author_name'];
-  $sel_author_surname = $_GET['author_surname'];
-  $selBooks = $instanceBooks->filterBooks($sel_isbn, $sel_author_name, $sel_author_surname);
-} else {
-  $selBooks = $books;
-}
-
-// Zpracování mazání auta
+// Zpracování mazání knihy
 if (isset($_GET['delete'])) {
   $bookIsbn = $_GET['delete'];
   $instanceBooks->deleteBook($bookIsbn);
-  header("Location: index.php");
+  header("Location: list.php"); // Přesměrování na seznam knih
   exit();
 }
 ?>
@@ -32,12 +27,13 @@ if (isset($_GET['delete'])) {
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="wisbnth=device-wisbnth, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./scss/custom.css" rel="stylesheet">
-  <title>Prehled knih</title>
+  <title>Seznam knih</title>
   <style>
+    /* Optional styling */
     /* body * {
-      border: solisbn 2px blue;
+      border: solid 2px blue;
     } */
   </style>
 </head>
@@ -46,18 +42,18 @@ if (isset($_GET['delete'])) {
   <!-- navbar zacatek -->
   <section>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluisbn">
+      <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Books</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" isbn="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="add.php">Add</a>
+              <a class="nav-link" href="add.php">Add</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="list.php">List</a>
+              <a class="nav-link active" href="list.php">List</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="search.php">Search</a>
@@ -70,43 +66,39 @@ if (isset($_GET['delete'])) {
   <!-- navbar konec -->
 
   <!-- main zacatek -->
-  <section>
-    <?php
-    if (sizeof($selBooks) > 0) {
-
-    ?>
+  <section class="container my-5">
+    <?php if (sizeof($books) > 0): ?>
       <table class="table">
-        <tr>
-          <th>ISBN</th>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Book name</th>
-          <th>Info</th>
-        </tr>
-        <?php foreach ($selBooks as $book): ?>
+        <thead>
           <tr>
-            <td><?php echo $book['isbn']; ?></td>
-            <td><?php echo $book['author_name']; ?></td>
-            <td><?php echo $book['author_surname']; ?></td>
-            <td><?php echo $book['book_name']; ?></td>
-            <td><?php echo $book['info']; ?>
-            <td>
-              <a class="btn btn-warning" href="edit.php?isbn=<?php echo $book['isbn']; ?>">Editovat</a>
-              <a class="btn btn-warning" href="index.php?delete=<?php echo $book['isbn']; ?>" onclick="return confirm('Opravdu chcete smazat toto auto?');">Smazat</a>
-            </td>
+            <th>ISBN</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Book Name</th>
+            <th>Info</th>
+            <!-- <th>Actions</th> -->
           </tr>
-        <?php endforeach; ?>
+        </thead>
+        <tbody>
+          <?php foreach ($books as $book): ?>
+            <tr>
+              <td><?php echo htmlspecialchars($book['isbn']); ?></td>
+              <td><?php echo htmlspecialchars($book['author_name']); ?></td>
+              <td><?php echo htmlspecialchars($book['author_surname']); ?></td>
+              <td><?php echo htmlspecialchars($book['book_name']); ?></td>
+              <td><?php echo htmlspecialchars($book['info']); ?></td>
+              <!-- <td>
+                <a class="btn btn-warning" href="index.php?delete=<?php echo urlencode($book['isbn']); ?>" onclick="return confirm('Opravdu chcete smazat tuto knihu?');">Smazat</a>
+              </td> -->
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
       </table>
-
-    <?php
-    } else { ?>
-      <p>Žádná auta k zobrazení</p>
-    <?php
-    }
-    ?>
+    <?php else: ?>
+      <p>Žádné knihy k zobrazení</p>
+    <?php endif; ?>
   </section>
   <!-- main konec -->
-
 
   <!-- SKRIPT BOOTSTRAP -->
   <script src="./bootstrap.bundle.min.js"></script>
