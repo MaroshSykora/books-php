@@ -11964,4 +11964,8 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.mainTitle {
+  font-size: 10vw;
+  text-align: center;
 }/*# sourceMappingURL=custom.css.map */
