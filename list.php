@@ -1,5 +1,5 @@
 <?php
-// UVODNI STRANKA
+// ADD STRANKA
 
 ?>
 
