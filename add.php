@@ -83,7 +83,7 @@ if (isset($_POST['add'])) {
         <input type="text" class="form-control" name="book_name" placeholder="Book Name" value="" required>
       </div>
       <div class="col-md-12">
-        <input type="text" class="form-control" name="info" placeholder="Info" value="" required>
+        <textarea class="form-control" name="info" placeholder="Info" required rows="4" cols="50"></textarea>
       </div>
       <div class="col-12">
         <input class="btn btn-primary" type="submit" name="add" value="Add a book">
@@ -94,7 +94,7 @@ if (isset($_POST['add'])) {
 
 
   <!-- SKRIPT BOOTSTRAP -->
-  <script src="./bootstrap.bundle.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- ^^^^^ -->
 </body>
 

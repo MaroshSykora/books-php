@@ -111,7 +111,7 @@ if (isset($_GET['isbn']) || isset($_GET['author_name']) || isset($_GET['author_s
 
 
   <!-- SKRIPT BOOTSTRAP -->
-  <script src="./bootstrap.bundle.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- ^^^^^ -->
 </body>
 
