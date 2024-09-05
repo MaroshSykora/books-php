@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -11965,7 +11966,56 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.mainTitle {
-  font-size: 10vw;
-  text-align: center;
+* body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #faf8e9;
+}
+
+.main {
+  height: 85vh;
+  width: auto;
+}
+
+.adjustable-size {
+  font-size: 17vw;
+}
+
+.black-color {
+  color: #0d0b0c;
+}
+
+.black-bg {
+  background-color: #0d0b0c;
+}
+
+.blue-color {
+  color: #c3d4e6;
+}
+
+.blue-bg {
+  background-color: #c3d4e6;
+}
+
+.green-color {
+  color: #8ca403;
+}
+
+.green-bg {
+  background-color: #8ca403;
+}
+
+.light-color {
+  color: #faf8e9;
+}
+
+.light-bg {
+  background-color: #faf8e9;
+}
+
+.brown-color {
+  color: #a86c0c;
+}
+
+.brown-bg {
+  background-color: #a86c0c;
 }/*# sourceMappingURL=custom.css.map */

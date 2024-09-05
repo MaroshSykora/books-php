@@ -1,5 +1,5 @@
 // Include any default variable overrides here (though functions won't be available)
-
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 //<- tady (nad @importem) je mozne vkladat css atributy pro prepsani hodnot puvodnich atributu
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
@@ -7,35 +7,41 @@
 //<- tady (pod @importem) se vypisuji nove vlastne vymyslene css atributy
 
 // Then add additional custom code here
-.mainTitle {
-  font-size: 10vw;
-  text-align: center;
+* body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #faf8e9;
+}
+
+.main {
+  height: 85vh;
+  width: auto;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.adjustable-size {
+  font-size: 17vw;
 }
 
 .black-color {
   color: #0d0b0c;
 }
-
 .black-bg {
   background-color: #0d0b0c;
 }
-
 .blue-color {
   color: #c3d4e6;
 }
-
 .blue-bg {
   background-color: #c3d4e6;
 }
-
 .green-color {
   color: #8ca403;
 }
-
 .green-bg {
   background-color: #8ca403;
 }
-
 .light-color {
   color: #faf8e9;
 }
