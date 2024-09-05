@@ -71,7 +71,7 @@ if (isset($_POST['add'])) {
   <section class="container">
     <form action="add.php" method="post" class="row g-3 my-5">
       <div class="col-md-12">
-        <input type="number" class="form-control" name="isbn" placeholder="ISBN" value="" required>
+        <input type="text" class="form-control" name="isbn" placeholder="ISBN" value="" required>
       </div>
       <div class="col-md-12">
         <input type="text" class="form-control" name="author_name" value="" placeholder="Author's Name" required>

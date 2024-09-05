@@ -50,6 +50,10 @@ class Books
       $sql .= " AND author_surname LIKE :author_surname";
       $params[':author_surname'] = '%' . $author_surname . '%';
     }
+    if (!empty($book_name)) {
+      $sql .= " AND book_name LIKE :book_name";
+      $params[':book_name'] = '%' . $book_name . '%';
+    }
 
     //  priprava SQL dotazu
     $stmt = $this->dbConn->prepare($sql);
@@ -71,7 +75,7 @@ class Books
   {
     $sql = 'DELETE FROM book WHERE isbn = :isbn';
     $stmt = $this->dbConn->prepare($sql);
-    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_INT);
+    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
     return $stmt->execute();
   }
 
@@ -80,7 +84,7 @@ class Books
   {
     $sql = 'SELECT * FROM book WHERE isbn = :isbn';
     $stmt = $this->dbConn->prepare($sql);
-    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_INT);
+    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
@@ -90,7 +94,7 @@ class Books
   {
     $sql = "UPDATE book SET isbn = :isbn, author_name =:author_name, author_surname = :author_surname, book_name =:book_name, info = :info WHERE isbn = :isbn";
     $stmt = $this->dbConn->prepare($sql);
-    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_INT);
+    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
     $stmt->bindParam(':author_name', $author_name, PDO::PARAM_STR);
     $stmt->bindParam(':author_surname', $author_surname, PDO::PARAM_STR);
     $stmt->bindParam(':book_name', $book_name, PDO::PARAM_STR);
@@ -103,7 +107,7 @@ class Books
   {
     $sql = "INSERT INTO book (isbn, author_name,author_surname, book_name, info) VALUES (:isbn, :author_name, :author_surname, :book_name, :info)";
     $stmt = $this->dbConn->prepare($sql);
-    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_INT);
+    $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
     $stmt->bindParam(':author_name', $author_name, PDO::PARAM_STR);
     $stmt->bindParam(':author_surname', $author_surname, PDO::PARAM_STR);
     $stmt->bindParam(':book_name', $book_name, PDO::PARAM_STR);
