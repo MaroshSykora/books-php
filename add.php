@@ -69,7 +69,9 @@ if (isset($_POST['add'])) {
 
   <!-- main zacatek -->
   <section class="container">
+
     <form action="add.php" method="post" class="row g-3 my-5">
+      <h2 class="h2">Add</h2>
       <div class="col-md-12">
         <input type="text" class="form-control" name="isbn" placeholder="ISBN" value="" required>
       </div>
@@ -86,7 +88,7 @@ if (isset($_POST['add'])) {
         <textarea class="form-control" name="info" placeholder="Info" required rows="4" cols="50"></textarea>
       </div>
       <div class="col-12">
-        <input class="btn btn-primary" type="submit" name="add" value="Add a book">
+        <input class="btn green-bg text-white" type="submit" name="add" value="Add a book">
       </div>
     </form>
   </section>

@@ -41,7 +41,7 @@ if (isset($_GET['delete'])) {
 <body>
   <!-- navbar zacatek -->
   <section>
-  <nav class="navbar navbar-expand-lg black-bg">
+    <nav class="navbar navbar-expand-lg black-bg">
       <div class="container-fluid">
         <a class="navbar-brand green-color fs-3" href="index.php">Books</a>
         <button class="navbar-toggler light-bg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,6 +67,7 @@ if (isset($_GET['delete'])) {
 
   <!-- main zacatek -->
   <section class="container my-5">
+    <h2 class="h2">Book list</h2>
     <?php if (sizeof($books) > 0): ?>
       <table class="table">
         <thead>

@@ -63,20 +63,43 @@ if (isset($_GET['isbn']) || isset($_GET['author_name']) || isset($_GET['author_s
 
   <!-- main zacatek -->
   <section>
-    <div class="container">
+    <div class="container my-3">
       <h2 class="h2">Searching books</h2>
       <form action="search.php" method="get">
-        <input class="form-control my-2" name="isbn" type="text" placeholder="ISBN" />
-        <input class="form-control my-2" name="author_name" type="text" placeholder="Author's name" />
-        <input class="form-control my-2" name="author_surname" type="text" placeholder="Author's surname" />
-        <input class="form-control my-2" name="book_name" type="text" placeholder="Book name" />
-        <input class="btn btn-primary my-2" type="submit" placeholder="Odešli" />
+        <input
+          class="form-control my-2"
+          name="isbn"
+          type="text"
+          placeholder="ISBN" />
+        <input
+          class="form-control my-2"
+          name="author_name"
+          type="text"
+          placeholder="Author's name" />
+        <input
+          class="form-control my-2"
+          name="author_surname"
+          type="text"
+          placeholder="Author's surname" />
+        <input
+          class="form-control my-2"
+          name="book_name"
+          type="text"
+          placeholder="Book name" />
+        <input
+          class="btn green-bg text-white my-2"
+          type="submit"
+          value="Search" />
       </form>
+
+
+
+
       <?php
       if (sizeof($selBooks) > 0) {
 
       ?>
-        <table class="table">
+        <table class="table my-3">
           <tr>
             <th>ISBN</th>
             <th>Author's name</th>
